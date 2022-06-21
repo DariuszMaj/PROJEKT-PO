@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SchoolMark;
 
 namespace SchoolMark
 {
@@ -37,12 +38,18 @@ namespace SchoolMark
                 Close();
 
             }
-
+            
             else
             {
-                MessageBox.Show("Wrong details!");
+                UserMessages NewInfo = new UserMessages();
+                NewInfo.SomethingWrong.Text = "Błędne dane!\n Spróbuj jeszcze raz!";
+                NewInfo.Show();
+            
+
+             
 
             }
+           
         }
     }
 }

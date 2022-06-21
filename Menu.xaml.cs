@@ -1,4 +1,4 @@
-﻿using SchoolMark.ViewModels;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,12 +31,14 @@ namespace SchoolMark
         public Menu()
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
+          
 
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e) { if (e.LeftButton == MouseButtonState.Pressed) DragMove(); }
         private void Home_Click(object sender, RoutedEventArgs e)
         {
+
+            UserStories.Visibility = Visibility.Hidden; 
             Panel_Ocen.Visibility = Visibility;
             
 
@@ -49,6 +51,7 @@ namespace SchoolMark
             this.Close();
 
         }
+     
 
 
         private void UploadStudentList_Button(object sender, RoutedEventArgs e)
@@ -96,53 +99,79 @@ namespace SchoolMark
         {
             string NeededIndex = Convert.ToString(Numer_Albumu.Text);
 
-          //Jeżeli studednt istnieje i znajduje się w pobranej klasie
+            //Jeżeli studednt istnieje i znajduje się w pobranej klasie
             if (IndeksNumbers.Contains(NeededIndex))
             {
                 try
                 {
                     var ChoosenSubject = Przedmioty_zmiana_Oceny.SelectedIndex;
-                    if (ChoosenSubject == 0) MessageBox.Show("Wybierz przedmiot!"); 
+                    if (ChoosenSubject == 0)
+                    {
+
+                        UserMessages SubjectMessage = new UserMessages();
+                        SubjectMessage.SomethingWrong.Text = "Wybierz przedmiot!";
+                        SubjectMessage.Show();
+
+
+                    }
                     else
                     {
 
-                    
-                    using (SqlConnection MyConnect = new SqlConnection(connectionString))
-                    {
-                        //ID studenta po numerze albumu
-                        MyConnect.Open();
-                        string idquery = $"Select ID from Uczniowie where Numer_Albumu={NeededIndex}";
 
-                        SqlCommand command_for_id = new SqlCommand(idquery, MyConnect);
-                        SqlDataReader readerid = command_for_id.ExecuteReader();
-                        String Student_ID = null;
-                        while (readerid.Read())
+                        using (SqlConnection MyConnect = new SqlConnection(connectionString))
                         {
+                            //ID studenta po numerze albumu
+                            MyConnect.Open();
+                            string idquery = $"Select ID from Uczniowie where Numer_Albumu={NeededIndex}";
 
-                            IDataRecord dataReceordid = ((IDataRecord)readerid);
-                            Student_ID = Convert.ToString(readerid.GetValue(0));
+                            SqlCommand command_for_id = new SqlCommand(idquery, MyConnect);
+                            SqlDataReader readerid = command_for_id.ExecuteReader();
+                            String Student_ID = null;
+                            while (readerid.Read())
+                            {
+
+                                IDataRecord dataReceordid = ((IDataRecord)readerid);
+                                Student_ID = Convert.ToString(readerid.GetValue(0));
+                            }
+                            readerid.Close();
+
+                            //Update oceny
+                            string UpdatingQuerry = $"Update OcenyKońcowe set Ocena = {Ocena_zmiana.Text} where ID_Ucznia = {Student_ID} and ID_Przedmiotu = {ChoosenSubject}";
+                            SqlCommand command = new SqlCommand(UpdatingQuerry, MyConnect);
+                            SqlDataReader reader = command.ExecuteReader();
+
+
+
+                            UserMessages NewMark = new UserMessages();
+                            NewMark.SomethingWrong.Text = "Pomyślnie zmieniono ocenę!";
+                            NewMark.Show();
                         }
-                        readerid.Close();
-
-                        //Update oceny
-                        string UpdatingQuerry = $"Update OcenyKońcowe set Ocena = {Ocena_zmiana.Text} where ID_Ucznia = {Student_ID} and ID_Przedmiotu = {ChoosenSubject}";
-                        SqlCommand command = new SqlCommand(UpdatingQuerry, MyConnect);
-                        SqlDataReader reader = command.ExecuteReader();
-
-
-                        MessageBox.Show("Pomyślnie zmieniono ocenę!");
-                    }
 
                     }
-                } catch (Exception) { MessageBox.Show("Błędne dane!"); };
+                }
+                catch (Exception)
+                {
+                   
+                    UserMessages ErrorOccur = new UserMessages();
+                    ErrorOccur.SomethingWrong.Text = "Błędne dane!";
+                    ErrorOccur.Show();
+                };
 
             }
 
             else
-                MessageBox.Show("Upewnij się, że uczeń znajduje się na liście uczniów wybranej klasy.");
+            {
+             
+                UserMessages StudentFailed = new UserMessages();
+                StudentFailed.SomethingWrong.Text = "Upewnij się,\n że uczeń znajduje się na liście wybranej klasy!";
+                StudentFailed.SomethingWrong.FontSize = 16;
+                StudentFailed.Show();
+            }
 
 
-        }
+
+
+            }
 
         private void ApplyViewMarks_Button(object sender, RoutedEventArgs e)
         {
@@ -195,18 +224,132 @@ namespace SchoolMark
                         readerid.Close();
                         AvG_Student = AvG_Student / 11;
                         
-                        MessageBox.Show(Name+"\nOceny \n" + MarkView+"\n\n Średnia: "+AvG_Student);
+                     
+                        UserMessages MarksView = new UserMessages();
+                        MarksView.NameMessage.Text = Name;
+                        MarksView.SomethingWrong.FontSize = 16;
+                        if (ChoosenSubject == 0)
+                        {
+                            MarksView.SomethingWrong.Text = $"Oceny:  \n {MarkView} \n Średnia: {AvG_Student}";
+                            MarksView.ChangeSizeOfMessageWindow.Height = 800;
+                            MarksView.SomethingWrong.Height = 300;
+                        }
+                        else
+                        { 
+                            MarksView.SomethingWrong.Text = $"Oceny:  \n {MarkView}";
+                            MarksView.ChangeSizeOfMessageWindow.Height = 600;
+                            MarksView.SomethingWrong.Height = 60;
+                        }
+
+                        MarksView.Show();
+
                         }
 
                     
                 }
-                catch (Exception) { MessageBox.Show("Błędne dane!"); };
+                catch (Exception)
+                {
+                    UserMessages ErrorOccur = new UserMessages();
+                    ErrorOccur.SomethingWrong.Text = "Błędne dane!";
+                    ErrorOccur.Show();
+                };
 
             }
 
             else
-                MessageBox.Show("Upewnij się, że uczeń znajduje się na liście uczniów wybranej klasy.");
+            {
 
+           
+                UserMessages StudentFailed = new UserMessages();
+                StudentFailed.SomethingWrong.Text = "Upewnij się,\n że uczeń znajduje się na liście wybranej klasy!";
+                StudentFailed.SomethingWrong.FontSize = 16;
+                StudentFailed.Show();
+            }
+        }
+
+        private void Searching_button_Click(object sender, RoutedEventArgs e)
+        {
+            
+            using (SqlConnection MyConnect = new SqlConnection(connectionString))
+            {
+                //ID studenta po numerze albumu
+                try { 
+                MyConnect.Open();
+                string idquery = $"Select ID from Uczniowie where Numer_Albumu={Searching_User_UserStories.Text}";
+
+                SqlCommand command_for_id = new SqlCommand(idquery, MyConnect);
+                SqlDataReader readerid = command_for_id.ExecuteReader();
+                var checkIsStudenExist = "";
+                while (readerid.Read())
+                {
+
+                    IDataRecord dataReceordid = ((IDataRecord)readerid);
+                    checkIsStudenExist = Convert.ToString(readerid.GetValue(0));
+                }
+                readerid.Close();
+                    if (checkIsStudenExist == "")
+                    {
+                        UserMessages ErrorOccur = new UserMessages();
+                        ErrorOccur.SomethingWrong.Text = "Błędne dane!";
+                        ErrorOccur.Show();
+                    }
+                    else
+                    {
+                        string UserStoriesInquiry = $"select Imię,Nazwisko,Numer_Albumu,Frekwencja,Wynik,Nazwa,ROUND(AVG(CAST(Ocena as float)),2) from Uczniowie join OcenyKońcowe on Uczniowie.ID = OcenyKońcowe.ID_Ucznia join Frekwencja on Uczniowie.ID = Frekwencja.ID_Ucznia join Wyniki on Uczniowie.ID = Wyniki.ID_Ucznia join EGZAMINY on Wyniki.ID_Egzaminu = Egzaminy.ID  where Uczniowie.ID = {checkIsStudenExist}  group by Imię,Nazwisko,Numer_Albumu,Frekwencja,Wynik,Nazwa";
+
+                        SqlCommand UserStoriesCommand = new SqlCommand(UserStoriesInquiry, MyConnect);
+                        SqlDataReader readerUserStories = UserStoriesCommand.ExecuteReader();
+                        string Name = "";
+                        string SurName = "";
+                        string AVG_User = "";
+                        string Number_User = "";
+                        string Freq_User = "";
+                        string Results = "";
+
+
+                        while (readerUserStories.Read())
+                        {
+
+                            IDataRecord dataReceordid = ((IDataRecord)readerUserStories);
+                            Name = Convert.ToString(readerUserStories.GetValue(0));
+                            SurName = Convert.ToString(readerUserStories.GetValue(1));
+                            Number_User = Convert.ToString(readerUserStories.GetValue(2));
+                            Freq_User = Convert.ToString(readerUserStories.GetValue(3));
+                            AVG_User = Convert.ToString(readerUserStories.GetValue(6));
+                            Results += Convert.ToString(String.Format("{0}: {1} \n", readerUserStories[5], readerUserStories[4]));
+                        }
+                        readerUserStories.Close();
+
+                        Name_UserStories.Text = Name;
+                        Surname_UserStories.Text = SurName;
+                        Number_UserStories.Text = Number_User;
+                        Freq_UserStories.Text = Freq_User;
+                        Results_UserStories.Text = Results;
+                        AVG_UserStories.Text = AVG_User;
+
+
+                        UserStoriesContent.Visibility = Visibility;
+
+                    }
+
+
+                }catch (Exception) {
+                    UserMessages ErrorOccur = new UserMessages();
+                    ErrorOccur.SomethingWrong.Text = "Błędne dane!";
+                    ErrorOccur.Show();
+                }
+            }
+        }
+
+        private void Profile_Click(object sender, RoutedEventArgs e)
+        {
+            Panel_Ocen.Visibility = Visibility.Hidden;
+            UserStories.Visibility = Visibility;
+        }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
     public class MyTime

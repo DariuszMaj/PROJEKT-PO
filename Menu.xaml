@@ -202,10 +202,10 @@
                     <ColumnDefinition />
                     <ColumnDefinition Width="25" />
                 </Grid.ColumnDefinitions>
-                <Border x:Name="Border" SnapsToDevicePixels="True" Grid.ColumnSpan="2" Background="Transparent" BorderBrush="White" BorderThickness="1"/>
-                <Border x:Name="Boredr1" SnapsToDevicePixels="True" Grid.Column="1"  Margin="1" Background="Black" BorderBrush="white" BorderThickness="0,0,1,0" />
+                <Border x:Name="Border" SnapsToDevicePixels="True" Grid.ColumnSpan="2" Background="#7123" BorderBrush="Transparent" BorderThickness="1"/>
+                <Border x:Name="Boredr1" SnapsToDevicePixels="True" Grid.Column="1"  Margin="1" Background="#7123" BorderBrush="Transparent" BorderThickness="0,0,1,0" />
                 <Path x:Name="Arrow" SnapsToDevicePixels="True" Grid.Column="1" Fill="White" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 6 6 L 12 0 Z"/>
-                <ContentPresenter Grid.Column="0" TextElement.Foreground="Orange"></ContentPresenter>
+                <ContentPresenter Grid.Column="0" TextElement.Foreground="White"></ContentPresenter>
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="ToggleButton.IsMouseOver" Value="True">
@@ -237,10 +237,10 @@
                             <ToggleButton Name="ToggleButton" Foreground="White" Template="{StaticResource ComboBoxToggleButton}" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press">
                             </ToggleButton>
                             <ContentPresenter Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Margin="3,3,23,3"  VerticalAlignment="Center" HorizontalAlignment="Center" />
-                            <TextBox OverridesDefaultStyle="True" SelectionBrush="Gray" CaretBrush="White" Margin="0,0,30,0" TextWrapping="NoWrap"   x:Name="PART_EditableTextBox" FontFamily="Segoe UI Dark"   Foreground="White" Style="{x:Null}" Template="{StaticResource ComboBoxTextBox}" HorizontalAlignment="Left" Focusable="True"  VerticalAlignment="Center"  FontSize="16"   Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                            <TextBox OverridesDefaultStyle="True" SelectionBrush="Gray" CaretBrush="Transparent" Margin="0,0,30,0" TextWrapping="NoWrap"   x:Name="PART_EditableTextBox" FontFamily="Segoe UI Dark"   Foreground="White" Style="{x:Null}" Template="{StaticResource ComboBoxTextBox}" HorizontalAlignment="Left" Focusable="True"  VerticalAlignment="Center"  FontSize="16"   Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
                             <Popup Name="Popup"  Grid.ColumnSpan="2" Placement="Bottom"  IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
                                 <Grid Name="DropDown"   SnapsToDevicePixels="True" MaxWidth="{TemplateBinding ActualWidth}" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                    <Border Grid.ColumnSpan="2" Grid.RowSpan="2" x:Name="DropDownBorder" SnapsToDevicePixels="True" Background="white" MaxWidth="{TemplateBinding ActualWidth}" BorderThickness="1" BorderBrush="white"/>
+                                    <Border Grid.ColumnSpan="2" Grid.RowSpan="2" x:Name="DropDownBorder" SnapsToDevicePixels="True" Background="#7123" MaxWidth="{TemplateBinding ActualWidth}" BorderThickness="1" BorderBrush="Transparent"/>
                                     <ScrollViewer Grid.ColumnSpan="2" ScrollViewer.CanContentScroll="False" Grid.Row="1" SnapsToDevicePixels="True">
                                         <StackPanel IsItemsHost="True" Background="Transparent">
                                         </StackPanel>
@@ -330,7 +330,7 @@
                         Height="100"
                         Background="Transparent"
                         BorderBrush="Transparent"
-                        Margin="0,0,0,10">
+                        Margin="0,0,0,10" Click="Profile_Click">
                     <Image Source="Images/profile_icon.png" Stretch="none"></Image>
 
                 </Button>
@@ -368,32 +368,32 @@
             <!-- Header-->
             <Grid Height="80"
                   VerticalAlignment="Top"
-                  Background="Transparent" Margin="0,22,0,0">
-
+                  Background="Transparent" Margin="0,23,0,0">
 
                 <TextBlock Text="Witaj na aplikacji SchoolMark"
-                           FontSize="26"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Foreground="white">
+                FontSize="26"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Foreground="white" Margin="0,23,0,0"/>
 
-
-                </TextBlock>
-
-                <Button x:Name="Logout"
-                        Style="{DynamicResource CloseBtnStyle}"
-                        Height="40"
-                        Width="40"
+                <Button Style="{DynamicResource HomeBtnStyle}" x:Name="Logout"
                         Background="Transparent"
-                        BorderThickness="0"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Right"
-                        Margin="0,0,20,0">
-                    <Image Source="Images/close_icon.png" Stretch="None"></Image>
+                        BorderBrush="Transparent"
+                       Click="Logout_Click"
+                        Command="{Binding UpdateViewCommand}"
+                        CommandParameter="Home" Margin="1296,7,10,10"
+                        >
+                    <Image Source="Images/close_icon.png" Stretch="none"></Image>
+
+
+
                 </Button>
 
+                <!--<Image Source="Images/close_icon.png" Stretch="None"></Image>
+                </Button>-->
+
             </Grid>
-            <Grid x:Name="Panel_Ocen" Margin="10,10,0,0" Visibility="Hidden">
+            <Grid x:Name="Panel_Ocen" Margin="10,10,0,0" Visibility="hidden">
                 <TextBlock Text="Wybierz klasę"
                            FontSize="26"
                            VerticalAlignment="Top"
@@ -407,7 +407,7 @@
 
 
 
-                <ComboBox  Style="{StaticResource combobox_style}" x:Name="BaseBox" SelectedIndex="0" Padding="2" Background="White" Margin="325,132,996,610" Foreground="#FFE25B5B" >
+                <ComboBox  Style="{StaticResource combobox_style}" x:Name="BaseBox" SelectedIndex="0" Padding="2" Background="White" Margin="325,132,996,610" Foreground="White" >
                     <ComboBoxItem x:Name="LO1" Content="3LO1" VerticalAlignment="Center"/>
                     <ComboBoxItem x:Name="LO2" Content="3LO2"/>
                     <ComboBoxItem x:Name="LO3" Content="3LO3"/>
@@ -436,11 +436,11 @@
                 Text=""
                 FontSize="20"
                 Foreground="White"
-                Background="Transparent"
+                Background="#7123"
                 BorderThickness="0"
                 HorizontalContentAlignment="Left"
-                Opacity="0.5"
-    Margin="1151,218,172,554"/>
+             
+    Margin="1151,218,140,549"/>
                 <TextBox 
                 x:Name="Ocena_zmiana"
                 FontFamily="Helvetica"
@@ -448,12 +448,12 @@
                 Text=""
                 FontSize="20"
                 Foreground="White"
-                Background="Transparent"
+                Background="#7123"
                 BorderThickness="0"
                 HorizontalContentAlignment="Left"
-                Opacity="0.5"
-                Margin="1151,310,152,462"/>
-                <ComboBox  Style="{StaticResource combobox_style}" x:Name="Przedmioty_zmiana_Oceny" SelectedIndex="0" Padding="2" Background="White" Margin="1151,261,34,510" Foreground="#FFE25B5B" >
+              
+                Margin="1151,313,140,454"/>
+                <ComboBox  Style="{StaticResource combobox_style}" x:Name="Przedmioty_zmiana_Oceny" SelectedIndex="0" Padding="2" Background="White" Margin="1151,261,34,500" Foreground="White" >
                     <ComboBoxItem x:Name="firstoption" Content="Wybierz Przedmiot" VerticalAlignment="Center" />
                     <ComboBoxItem x:Name="polski" Content="Język polski" VerticalAlignment="Center"/>
                     <ComboBoxItem x:Name="angielski" Content="Język angielski"/>
@@ -485,15 +485,15 @@
                 Text=""
                 FontSize="20"
                 Foreground="White"
-                Background="Transparent"
+                Background="#7123"
                 BorderThickness="0"
                 HorizontalContentAlignment="Left"
-                Opacity="0.5"
-                Margin="1151,516,172,256"/>
+               
+                Margin="1151,528,139,240"/>
                 <Border
                 Background="White"
                 Opacity="0.5" Margin="1151,545,185,253"/>
-                <ComboBox  Style="{StaticResource combobox_style}" x:Name="Przedmioty_view_Oceny" SelectedIndex="0" Padding="2" Background="White" Margin="1151,566,34,205" Foreground="#FFE25B5B" >
+                <ComboBox  Style="{StaticResource combobox_style}" x:Name="Przedmioty_view_Oceny" SelectedIndex="0" Padding="2" Background="White" Margin="1151,566,34,196" Foreground="White" >
                     <ComboBoxItem x:Name="firstoption_view" Content="Wszystkie Przedmioty" VerticalAlignment="Center" />
                     <ComboBoxItem x:Name="polski_view" Content="Język polski" VerticalAlignment="Center"/>
                     <ComboBoxItem x:Name="angielski_view" Content="Język angielski"/>
@@ -529,16 +529,16 @@
 
             </Grid>-->
 
-            <Grid x:Name="UserStories" >
+            <Grid x:Name="UserStories" Visibility="Hidden" >
 
-                
+
 
 
 
                 <iconPacks:PackIconMaterial Kind="Account" 
                                                 Foreground="White" Margin="1145,120,0,0"/>
                 <TextBox 
-                             x:Name="Searching_User"
+                             x:Name="Searching_User_UserStories"
                              FontFamily="Helvetica"
                              FontWeight="Light"
                              Text="Wprowadź numer albumu"
@@ -551,20 +551,151 @@
                              Opacity="0.5" Margin="907,118,260,662"
                              />
 
-                <Border Width="250"
+                <Border Width="300"
                         Height="2"
                         Background="White"
                         Opacity="0.5" Margin="912,143,238,655"/>
 
 
-                <Button Content="ZNAJDŹ" Click="Finding_button_click" Margin="1180,117,72,656"/>
-                <Grid x:Name="UserStoriesContent">
+                <Button Content="ZNAJDŹ"  Margin="1180,117,72,656" Click="Searching_button_Click"/>
+                <Grid x:Name="UserStoriesContent" Visibility="Hidden">
 
-                    <Image Source="Images/UserStories.png"  Margin="257,162,915,400" RenderTransformOrigin="0.526,0.111" />
+                    <Image Source="Images/UserStories.png"  Margin="257,162,915,400" ></Image>
+                    <!--<Image Source="Images/close_icon.png" Stretch="none"></Image>-->
+
+                    <TextBlock Text="Imię: "
+                           FontSize="26"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Foreground="white" Margin="535,184,0,0">
+
+
+                    </TextBlock>
+                    <Border Width="400"
+                        Height="2"
+                        Background="White"
+                        Opacity="0.5" Margin="310,0,238,350"/>
+
+                    <TextBlock Text="Nazwisko:  "
+                           FontSize="26"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Foreground="white" Margin="532,220,0,0">
+
+
+                    </TextBlock>
+                    <Border Width="400"
+                        Height="2"
+                        Background="White"
+                        Opacity="0.5" Margin="310,0,238,270"/>
+
+                    <TextBlock Text="Numer Albumu:  "
+                           FontSize="26"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Foreground="white" Margin="535,260,0,0">
+
+
+                    </TextBlock>
+
+                    <Border Width="400"
+                        Height="2"
+                        Background="White"
+                        Opacity="0.5" Margin="310,0,238,200"/>
+
+                    <TextBlock Text="Średnia ocen:  "
+                           FontSize="26"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Foreground="white" Margin="535,300,0,0">
+
+
+                    </TextBlock>
+                    <Border Width="400"
+                        Height="2"
+                        Background="White"
+                        Opacity="0.5" Margin="310,0,238,120"/>
+
+                    <TextBlock Text="Frekwencja:  "
+                           FontSize="26"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Foreground="white" Margin="535,340,0,0">
+
+
+                    </TextBlock>
+                    <Border Width="400"
+                        Height="2"
+                        Background="White"
+                        Opacity="0.5" Margin="310,0,238,40"/>
+
+                    <TextBlock Text="Wyniki:  "
+                           FontSize="26"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Foreground="white" Margin="535,378,0,0">
+
+
+                    </TextBlock>
+                    <Border Width="400"
+                        Height="2"
+                        Background="White"
+                        Opacity="0.5" Margin="310,30,238,0"/>
+                    <TextBlock Text=""
+                         
+                           Width="200"
+                           x:Name="Name_UserStories"
+                    FontSize="26"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Foreground="white" Margin="735,183,0,0"/>
+                    <TextBlock Text=""
+                           
+                           Width="200"
+                           x:Name="Surname_UserStories"
+                    FontSize="26"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Foreground="white" Margin="735,223,0,0"/>
+                    <TextBlock Text=""
+                           
+                           Width="200"
+                           x:Name="Number_UserStories"
+                    FontSize="26"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Foreground="white" Margin="735,262,0,0"/>
+                    <TextBlock Text=""
+                           
+                           Width="200"
+                           x:Name="AVG_UserStories"
+                    FontSize="26"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Foreground="white" Margin="735,303,0,0"/>
+                    <TextBlock Text=""
+                          
+                           Width="200"
+                           x:Name="Freq_UserStories"
+                    FontSize="26"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Foreground="white" Margin="735,343,0,0"/>
+                    <TextBlock Text=""
+                           
+                           Width="414"
+                           x:Name="Results_UserStories"
+                    FontSize="26"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+
+                    Foreground="white" Margin="535,424,0,0" RenderTransformOrigin="0.495,1.533" Height="293"/>
+
                 </Grid>
 
-
             </Grid>
+
+
 
         </Grid>
     </Grid>
