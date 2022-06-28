@@ -1,9 +1,9 @@
-﻿<Window x:Class="SchoolMark.UserMessages"
+﻿<Window x:Class="SchoolsMarks.UserMessages"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SchoolMark" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:SchoolsMarks" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="380"
         WindowStyle="none"
@@ -18,8 +18,8 @@
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="189*"/>
+                <RowDefinition Height="311*"/>
             </Grid.RowDefinitions>
 
 
@@ -33,7 +33,7 @@
             </Border>
 
 
-            <StackPanel VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center" Height="170" Margin="0,12,0,7">
                 <Image Source="Images/home.png" Width="100"/>
                 <TextBlock Text="School Mark"
                            FontWeight="Light"
@@ -41,11 +41,11 @@
                            FontSize="28"
                            Foreground="White"
                            HorizontalAlignment="Center"/>
-                
-                
+
+
                 <TextBlock Text=""
                            FontWeight="Light"
-                           FontFamily="Bradley Hand ITC"
+                           FontFamily="Veltica"
                            FontSize="28"
                            Foreground="White"
                            x:Name="NameMessage"
@@ -63,12 +63,12 @@
 
                 <TextBlock Text=""
                            FontWeight="Light"
-                           FontFamily="Bradley Hand ITC"
+                           FontFamily="Veltica"
                            FontSize="28"
                            Foreground="White"
                            x:Name="SomethingWrong"
                            TextAlignment="center"
-                           HorizontalAlignment="Center" Width="328" Height="109"/>
+                           HorizontalAlignment="Center" Width="328" Height="95" Margin="26,0"/>
 
 
 

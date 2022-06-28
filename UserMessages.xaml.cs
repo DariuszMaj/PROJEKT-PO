@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SchoolMark
+namespace SchoolsMarks
 {
     /// <summary>
     /// Interaction logic for UserMessages.xaml
@@ -26,11 +26,11 @@ namespace SchoolMark
         private void Window_MouseDown(object sender, MouseButtonEventArgs e) { if (e.LeftButton == MouseButtonState.Pressed) DragMove(); }
 
         public string MessageMonit { get; set; }
-        
+
 
         private void clOSE_Click(object sender, RoutedEventArgs e)
         {
-           
+
             Close();
         }
     }

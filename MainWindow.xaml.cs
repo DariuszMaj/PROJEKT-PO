@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SchoolMark;
+using SchoolsMarks;
 
-namespace SchoolMark
+namespace SchoolsMarks
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -30,26 +30,31 @@ namespace SchoolMark
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Password.Password == "Password" && username.Text=="Username")//dodac hasło i login z bazy danych
+            using (var context = new Model1())
             {
-               
-                Menu menu1 = new Menu();
-                menu1.Show();
-                Close();
+                var query = from Logg in context.Passwords
+                            where Logg.Login == username.Text && Logg.Password1 == Password.Password
+                            select(Logg);
+                if (query.SingleOrDefault() != null)
+                {
+                    Menu menu1 = new Menu();
+                    menu1.Show();
+                    Close();
+                    
+                }
+                else
+                {
+                    UserMessages NewInfo = new UserMessages();
+                    NewInfo.SomethingWrong.Text = "Błędne dane!\n Spróbuj jeszcze raz!";
+                    NewInfo.Show();
+                }
+
+
+
 
             }
-            
-            else
-            {
-                UserMessages NewInfo = new UserMessages();
-                NewInfo.SomethingWrong.Text = "Błędne dane!\n Spróbuj jeszcze raz!";
-                NewInfo.Show();
-            
+          
 
-             
-
-            }
-           
         }
     }
 }

@@ -1,9 +1,9 @@
-﻿<Window x:Class="SchoolMark.Menu"
+﻿<Window x:Class="SchoolsMarks.Menu"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SchoolMark" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:SchoolsMarks" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
        
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
@@ -280,6 +280,7 @@
             <Style.Triggers>
             </Style.Triggers>
         </Style>
+        <Color x:Key="GradientStopColor1">#F0830050</Color>
 
 
 
@@ -340,32 +341,13 @@
                         Height="100"
                         Background="Transparent"
                         BorderBrush="Transparent"
-                        Margin="0,10,0,0">
+                        Margin="0,10,0,0" Click="Settings_Click">
                     <Image Source="Images/settings_icon.png" Stretch="None"></Image>
 
                 </Button>
             </StackPanel>
 
-            <!--<ContentControl 
-                        Width="1285"
-                        Height="705"
-                        Content="{Binding SelectedViewModel}"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top" Margin="105,95,0,0">
-                <UIElement.RenderTransform>
-                    <MatrixTransform/>
-                </UIElement.RenderTransform>
-
-
-
-
-
-
-            </ContentControl>-->
-
-
-
-            <!-- Header-->
+          
             <Grid Height="80"
                   VerticalAlignment="Top"
                   Background="Transparent" Margin="0,23,0,0">
@@ -389,11 +371,10 @@
 
                 </Button>
 
-                <!--<Image Source="Images/close_icon.png" Stretch="None"></Image>
-                </Button>-->
+               
 
             </Grid>
-            <Grid x:Name="Panel_Ocen" Margin="10,10,0,0" Visibility="hidden">
+            <Grid x:Name="Panel_Ocen" Margin="10,10,0,0" Visibility="Hidden">
                 <TextBlock Text="Wybierz klasę"
                            FontSize="26"
                            VerticalAlignment="Top"
@@ -417,10 +398,102 @@
 
                 </ComboBox>
                 <Button Content="Pobierz listę studentów" HorizontalAlignment="Left" Margin="434,145,0,0" VerticalAlignment="Top" Height="35" Width="211" Click="UploadStudentList_Button" />
+                <TextBlock Text="IMIĘ"
+                           FontSize="26"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Foreground="white" Margin="220,200,0,0"
+                         
+                           />
 
 
 
-                <TextBox HorizontalAlignment="Left" Margin="157,236,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="543" Height="480" FontSize="24" x:Name="REsult1" Background="Transparent" Foreground="White">
+
+                <TextBlock Text="NAZWISKO"
+                           FontSize="26"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Foreground="white" Margin="420,200,0,0"
+                         
+                           />
+
+                <TextBlock Text="NUMER ALBUMU"
+                           FontSize="26"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Foreground="white" Margin="600,200,0,0"
+                         
+                           />
+
+
+
+
+                <Border
+                    Height="2"
+                    Background="White"
+                    Opacity="0.5" Margin="178,261,596,492"/>
+                <Border
+                    Height="2"
+                    Background="White"
+                    Opacity="0.5" Margin="178,261,596,432"/>
+                <Border
+                    Height="2"
+                    Background="White"
+                    Opacity="0.5" Margin="178,261,596,372"/>
+                <Border
+                    Height="2"
+                    Background="White"
+                    Opacity="0.5" Margin="178,261,596,302"/>
+                <Border
+                    Height="2"
+                    Background="White"
+                    Opacity="0.5" Margin="178,261,596,242"/>
+                <Border
+                    Height="2"
+                    Background="White"
+                    Opacity="0.5" Margin="178,261,596,182"/>
+                <Border
+                    Height="2"
+                    Background="White"
+                    Opacity="0.5" Margin="178,261,596,112"/>
+                <Border
+                    Height="2"
+                    Background="White"
+                    Opacity="0.5" Margin="178,261,596,52"/>
+                <Border
+                    Height="2"
+                    Background="White"
+                    Opacity="0.5" Margin="178,272,596,0"/>
+                <Border
+                    Height="2"
+                    Background="White"
+                    Opacity="0.5" Margin="178,332,596,0"/>
+                <Border
+                    Height="2"
+                    Background="White"
+                    Opacity="0.5" Margin="178,402,596,0"/>
+                <Border
+                    Height="2"
+                    Background="White"
+                    Opacity="0.5" Margin="178,462,596,0"/>
+
+
+                <TextBox HorizontalAlignment="Left" Margin="178,241,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="233" Height="386" FontSize="24" x:Name="REsult1" Background="Transparent" Foreground="White">
+                    
+                    <TextBox.BorderBrush>
+                        <SolidColorBrush Color="#FFABADB3" Opacity="0"/>
+                    </TextBox.BorderBrush>
+                </TextBox>
+                <TextBox HorizontalAlignment="Left" Margin="411,241,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="233" Height="386" FontSize="24" x:Name="REsult2" Background="Transparent" Foreground="White">
+
+                    <TextBox.BorderBrush>
+                        <SolidColorBrush Color="#FFABADB3" Opacity="0"/>
+                    </TextBox.BorderBrush>
+                </TextBox>
+
+
+                <TextBox HorizontalAlignment="Left" Margin="649,241,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Height="386" FontSize="24" x:Name="REsult3" Background="Transparent" Foreground="White">
+
                     <TextBox.BorderBrush>
                         <SolidColorBrush Color="#FFABADB3" Opacity="0"/>
                     </TextBox.BorderBrush>
@@ -511,23 +584,7 @@
                 <Button Content="Wyświetl" HorizontalAlignment="Left" Margin="1078,638,0,0" VerticalAlignment="Top" Height="36" Width="210" Click="ApplyViewMarks_Button" />
             </Grid>
 
-            <!--<Grid Height="30"
-                  VerticalAlignment="Bottom"
-                  Background="Transparent">
-                <StackPanel HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Margin="0,0,20,5"
-                           
-                            >
-                    <TextBlock Text="{Binding Clock}" 
-                               FontSize="26"
-                               Foreground="White"
-                               Opacity="0.6"
-                               FontFamily="Dubai Light" RenderTransformOrigin="0.439,1.309"/>
-                </StackPanel>
 
-
-            </Grid>-->
 
             <Grid x:Name="UserStories" Visibility="Hidden" >
 
@@ -691,12 +748,54 @@
 
                     Foreground="white" Margin="535,424,0,0" RenderTransformOrigin="0.495,1.533" Height="293"/>
 
+
+
                 </Grid>
+
+            </Grid>
+
+            <Grid x:Name="HomePage" Visibility="Hidden">
+
+                <Label  BorderBrush="#7123" Background="#7123" HorizontalContentAlignment="Center" BorderThickness="10" Height="148" HorizontalAlignment="Left" Margin="254,166,0,0" Name="label1" VerticalAlignment="Top" Width="466" FontSize="80" FontFamily="Forte" Foreground="White" />
+                <Calendar HorizontalAlignment="Left" Margin="690,152,0,0" VerticalAlignment="Top" Height="176" Width="400" Foreground="#FFAEAEAE">
+                    <Calendar.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFE4EAF0"/>
+                            <GradientStop Color="#FFECF0F4" Offset="0.007"/>
+                            <GradientStop Color="#77112233" Offset="0"/>
+                            <GradientStop Color="{DynamicResource {x:Static SystemColors.ControlDarkColorKey}}" Offset="1"/>
+                            <GradientStop Color="#B06E7985" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Calendar.Background>
+                    <Calendar.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFA3AEB9"/>
+                            <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                            <GradientStop Color="#FF718597" Offset="0.375"/>
+                            <GradientStop Color="Gainsboro" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Calendar.BorderBrush>
+                </Calendar>
+                <Border
+                        Height="2"
+                        Background="White"
+                        Opacity="0.5" Margin="254,345,275,453"/>
+                <Border
+                        Height="2"
+                        Background="White"
+                        Opacity="0.5" Margin="254,374,490,424"/>
+                <Border
+                    Height="2"
+                    Background="White"
+                    Opacity="0.5" Margin="254,400,680,398"/>
+                <Button Content="ZMIEŃ HASŁO"  Margin="254,436,900,337" x:Name="ChangePasswordButton" Click="ChangePasswordButton_Click"/>
+
 
             </Grid>
 
 
 
         </Grid>
+
     </Grid>
 </Window>
