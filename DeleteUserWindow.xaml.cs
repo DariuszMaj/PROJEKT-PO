@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace SchoolsMarks
 {
     /// <summary>
-    /// Interaction logic for ChangePasswordWindow.xaml
+    /// Interaction logic for DeleteUserWindow.xaml
     /// </summary>
     public partial class DeleteUserWindow : Window
     {
@@ -50,7 +50,6 @@ namespace SchoolsMarks
                 else
                 {
 
-              
                 var query = from Logg in context.Passwords
                             where Logg.Login == Login_to_Delete_Account.Text
                             select Logg;
@@ -60,14 +59,7 @@ namespace SchoolsMarks
                                   where Logg.Login == Login_to_Delete_Account.Text
                                   select Logg).FirstOrDefault();
 
-
                     context.Passwords.Remove(query1);
-
-
-
-
-
-
                     context.SaveChanges();
 
                     UserMessages NewInfo = new UserMessages();
@@ -75,12 +67,6 @@ namespace SchoolsMarks
                     NewInfo.Show();
                     Thread.Sleep(1000);
                     this.Close();
-
-                  
-
-
-
-
 
                 }
                 else
@@ -90,9 +76,7 @@ namespace SchoolsMarks
                     NewInfo.Show();
                 }
 
-                }
-
-
+               }
             }
         }
     }

@@ -5,7 +5,9 @@ namespace SchoolsMarks
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-
+    /// <summary>
+    /// HeadStudents class ( unuseful YET )
+    /// </summary>
     public partial class Samorząd
     {
         public int ID { get; set; }

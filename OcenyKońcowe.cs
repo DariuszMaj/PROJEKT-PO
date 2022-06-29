@@ -5,7 +5,9 @@ namespace SchoolsMarks
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-
+    /// <summary>
+    /// Mark class
+    /// </summary>
     public partial class OcenyKońcowe
     {
         public int ID { get; set; }

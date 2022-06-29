@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace SchoolsMarks
 {
+    /// <summary>
+    ///  DataBase creating class
+    /// </summary>
     public partial class Model1 : DbContext
     {
         public Model1()

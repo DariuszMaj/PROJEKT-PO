@@ -7,6 +7,9 @@ namespace SchoolsMarks
     using System.Data.Entity.Spatial;
 
     [Table("Uczniowie")]
+    /// <summary>
+    /// StudentClass
+    /// </summary>
     public partial class Uczniowie
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

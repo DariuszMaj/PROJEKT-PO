@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 
 namespace SchoolsMarks
 {
+    /// <summary>
+    ///iNITIALIZER FIRST PLAY CLASS
+    /// </summary>
     public class SchoolMarkInitializer : DropCreateDatabaseIfModelChanges<Model1>
     {
 
-
-
-
         protected override void Seed(Model1 context)
         {
-
 
             //DODAWANIE EGZMINÓW
 
@@ -72,10 +71,9 @@ namespace SchoolsMarks
             }
 
 
-
             //DODANIE KLAS
 
-            string MyClasses ="1,3LO1,Kornel Rusin,2,3LO2,Bożena Frankowski,3,3LO3,Ireneusz Mączka,4,3LO4,Czesława Musiał,5,3LO5,Pamela Urbaniak,6,3LO6,Łukasz Drozdowski";
+        string MyClasses ="1,3LO1,Kornel Rusin,2,3LO2,Bożena Frankowski,3,3LO3,Ireneusz Mączka,4,3LO4,Czesława Musiał,5,3LO5,Pamela Urbaniak,6,3LO6,Łukasz Drozdowski";
         string[] MyClassesData = MyClasses.Split(',');
         string[,] MyClassesArray = new string[6, 3];
         int MyClassCount = 0;
@@ -95,8 +93,6 @@ namespace SchoolsMarks
                     ID = Convert.ToInt32(MyClassesArray[i, 0]),
                     Nazwa = MyClassesArray[i, 1],
                     Opiekun=MyClassesArray[i,2]
-                   
-
                 };
                 context.Klasies.Add(AddMyClasses);
                 base.Seed(context);
@@ -194,8 +190,6 @@ namespace SchoolsMarks
             base.Seed(context);
 
 
-
-
             string AddStudents = "1, 3, Ildefons, Gołąb, 515	,2, 2, Krystiana, Grygiel, 516	,3, 2, Aldona, Adamczak, 517	,4, 6, Afra, Michalak, 518	,5, 4, Kazimiera, Dominiak, 519	,6, 4, Przemysław, Adamek, 520	,7, 5, Miłomir, Łukasik, 521	,8, 1, Dąbrówka, Sobczyński, 522	,9, 6, Radomiła, Adamiec, 523	,10, 5, Cezaria, Łapiński, 524	,11, 2, Gustawa, Banaszak, 525	,12, 4, Joanna, Lewandowski, 526	,13, 1, Przybysława, Drożdż, 527	,14, 6, Tomiła, Sikorski, 528	,15, 5, Wilma, Tomasik, 529	,16, 3, Antoni, Szpak, 530	,17, 5, Katarzyna, Marciniak, 531	,18, 3, Bartłomieja, Żuchowski, 532	,19, 2, Zyta, Dębowski, 533	,20, 6, Hugo, Zieliński, 534	,21, 3, Rodzisława, Kaczmarczyk, 535	,22, 1, Józefa, Kotowski, 536	,23, 6, Maria, Zalewski, 537	,24, 4, Olga, Partyka, 538	,25, 2, Salomea, Kawka, 539	,26, 2, Donata, Laskowski, 540	,27, 6, Adelard, Kasprzyk, 541	,28, 6, Agrypina, Chudy, 542	,29, 3, Miłosława, Karaś, 543	,30, 6, Ilia, Szczepanek, 544	,31, 3, Natalia, Skowronek, 545	,32, 4, Zofia, Urbańczyk, 546	,33, 1, Krystiana, Głogowski, 547	,34, 4, Ana, Szulc, 548	,35, 5, Eryka, Zagórski, 549	,36, 5, Odeta, Strzelczyk, 550	,37, 1, Pelagia, Rosiak, 551	,38, 6, Jasława, Adamowicz, 552	,39, 4, Symeo, Kotowski, 553	,40, 2, Samanta, Czapski, 554	,41, 4, Nora, Dąbrowski, 555	,42, 4, Sławomir, Niemczyk, 556	,43, 3, Elwira, Banasiak, 557	,44, 2, Lucjola, Lewandowski, 558	,45, 3, Żelisława, Cieśla, 559	,46, 3, Tytus, Bochenek, 560	,47, 2, Selena, Jezierski, 561	,48, 6, Lidia, Adamek, 562	,49, 2, Marietta, Grzybowski, 563	,50, 3, Agata, Bożek, 564	,51, 3, Krystiana, Konieczna, 565	,52, 4, Kasandra, Skrzypczak, 566	,53, 5, Czesław, Marczewski, 567	,54, 4, Beata, Chmura, 568	,55, 5, Noemi, Drzewiecki, 569	,56, 2, Kazimiera, Dutkiewicz, 570	,57, 2, Ewaryst, Karaś, 571	,58, 1, Aida, Tokarski, 572	,59, 4, Ezechiel, Klimaszewski, 573	,60, 6, Ola, Niemiec, 574";
             string[] AddStudentsData = AddStudents.Split(',');
             string[,] AddStudentsArray = new string[60, 5];
@@ -283,9 +277,6 @@ namespace SchoolsMarks
                 context.OcenyKońcowe.Add(MarksAdd);
                 base.Seed(context);
             }
-
-
-
 
         }
 

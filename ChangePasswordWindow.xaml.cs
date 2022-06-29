@@ -73,7 +73,6 @@ namespace SchoolsMarks
                     NewInfo.Show();
                 }
 
-
             }
         }
     }

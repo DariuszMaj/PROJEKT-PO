@@ -22,6 +22,7 @@ namespace SchoolsMarks
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
@@ -42,8 +43,7 @@ namespace SchoolsMarks
                 {
                     Menu menu1 = new Menu();
                     menu1.Show();
-                    Close();
-                    
+                    Close();    
                 }
                 else
                 {
@@ -51,13 +51,7 @@ namespace SchoolsMarks
                     NewInfo.SomethingWrong.Text = "Błędne dane!\n Spróbuj jeszcze raz!";
                     NewInfo.Show();
                 }
-
-
-
-
             }
-          
-
         }
     }
 }

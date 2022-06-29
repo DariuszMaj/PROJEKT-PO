@@ -20,13 +20,15 @@ using System.Timers;
 namespace SchoolsMarks
 {
     /// <summary>
-    /// Interaction logic for Menu.xaml
+    /// Main window class
     /// </summary>
     public partial class Menu : Window
 
     {
 
         public List<string> IndeksNumbers = new List<string>();
+
+        //2 SPOSÓB - POŁĄCZENIE Z BAZĄ
         //string connectionString = @"Data Source=DAREK-PC\DAREKSQL;Initial Catalog=EGZAMINY;Integrated Security=True";
 
         public Menu()
@@ -42,16 +44,12 @@ namespace SchoolsMarks
             UserStories.Visibility = Visibility.Hidden;
             HomePage.Visibility = Visibility.Hidden;
             Panel_Ocen.Visibility = Visibility;
-
-
-
         }
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-
         }
 
 
@@ -87,8 +85,6 @@ namespace SchoolsMarks
                                           .OrderBy(Mystudents => Mystudents.Numer_Albumu)
                                               select Mystudents.Numer_Albumu);
 
-
-
                 foreach (var a in UploadStudentListName)
                 {
 
@@ -105,36 +101,28 @@ namespace SchoolsMarks
                     REsult3.Text += Convert.ToString(String.Format("   {0}\n", a));
                     IndeksNumbers.Add(Convert.ToString(a));
                 }
-
-
-
-
-            }
-
-
-            //POŁĄCZENIE Z BAZĄ TEZ OKEJ
-
-            //string MyQuery = $"SELECT * FROM UCZNIOWIE where ID_Klasy= {ClassID} ";
-            //using (SqlConnection MyConnect = new SqlConnection(connectionString))
-            //{
-
-
-            //    IndeksNumbers.Clear();
-            //    SqlCommand command = new SqlCommand(MyQuery, MyConnect);
-            //    MyConnect.Open();
-            //    SqlDataReader reader = command.ExecuteReader();
-            //    while (reader.Read())
-            //    {
-            //        ReadSingleRow((IDataRecord)reader);
-            //        IndeksNumbers.Add(Convert.ToString(reader[4]));
-            //    }
-            //    reader.Close();
-
-
-            //    MyConnect.Close();
-            //}
-
+            } 
         }
+
+        //2 SPOSÓB - ZAPYTANIE DO BAZY
+
+        //string MyQuery = $"SELECT * FROM UCZNIOWIE where ID_Klasy= {ClassID} ";
+        //using (SqlConnection MyConnect = new SqlConnection(connectionString))
+        //{
+
+        //    IndeksNumbers.Clear();
+        //    SqlCommand command = new SqlCommand(MyQuery, MyConnect);
+        //    MyConnect.Open();
+        //    SqlDataReader reader = command.ExecuteReader();
+        //    while (reader.Read())
+        //    {
+        //        ReadSingleRow((IDataRecord)reader);
+        //        IndeksNumbers.Add(Convert.ToString(reader[4]));
+        //    }
+        //    reader.Close();
+        //    MyConnect.Close();
+        //}
+
 
         //ODCZYT DANYCH 
 
@@ -161,7 +149,6 @@ namespace SchoolsMarks
                         SubjectMessage.SomethingWrong.Text = "Wybierz przedmiot!";
                         SubjectMessage.Show();
 
-
                     }
                     else
                     {
@@ -186,7 +173,9 @@ namespace SchoolsMarks
                         NewMark.SomethingWrong.Text = "Pomyślnie zmieniono ocenę!";
                         NewMark.Show();
 
-                        //2 SPOSÓB
+
+                        //2 SPOSÓB - ZAPYTANIE DO BAZY
+
                         //using (SqlConnection MyConnect = new SqlConnection(connectionString))
                         //{
                         //    ////ID studenta po numerze albumu
@@ -212,8 +201,6 @@ namespace SchoolsMarks
                         //UserMessages NewMark = new UserMessages();
                         //NewMark.SomethingWrong.Text = "Pomyślnie zmieniono ocenę!";
                         //NewMark.Show();
-
-
                         //}
 
                     }
@@ -227,9 +214,7 @@ namespace SchoolsMarks
                     ErrorOccur.Show();
 
                 };
-
             }
-
 
             else
             {
@@ -240,10 +225,6 @@ namespace SchoolsMarks
                 StudentFailed.SomethingWrong.FontSize = 16;
                 StudentFailed.Show();
             }
-
-
-
-
         }
 
         private void ApplyViewMarks_Button(object sender, RoutedEventArgs e)
@@ -307,8 +288,6 @@ namespace SchoolsMarks
                                                      SurName = OneUser.Nazwisko
                                                  };
 
-
-
                             foreach (var obj in OneSubjectView)
                             {
 
@@ -336,15 +315,9 @@ namespace SchoolsMarks
                         }
 
                         MarksView.Show();
-
-
                     }
 
-
-
-
-
-                    //2 sposób
+                    //2 SPOSÓB - ZAPYTANIE DO BAZY
 
                     //using (SqlConnection MyConnect = new SqlConnection(connectionString))
                     //{
@@ -400,9 +373,7 @@ namespace SchoolsMarks
                     //    //MarksView.ChangeSizeOfMessageWindow.Height = 600;
                     //    //MarksView.SomethingWrong.Height = 60;
                     //}
-
                     //MarksView.Show();
-
                     //}
 
 
@@ -481,13 +452,8 @@ namespace SchoolsMarks
                                          select new
                                          {
                                              ExamNames = ExamName.Nazwa,
-                                             ExamREsults = ResultCheck.Wynik
+                                             ExamREsults = ResultCheck.Wynik+"%"
                                          };
-
-
-
-
-
 
                         var AVGVIEW = from OneMark in StudentList.OcenyKońcowe
                                       from OneSubject in StudentList.Przedmioties
@@ -495,12 +461,8 @@ namespace SchoolsMarks
                                       where OneMark.ID_Przedmiotu == OneSubject.ID && OneMark.ID_Ucznia == OneUser.ID && OneUser.ID == IDQuery.ID
                                       select new
                                       {
-
                                           Mark = OneMark.Ocena,
-
                                       };
-
-
 
                         foreach (var obj in AVGVIEW)
                         {
@@ -518,7 +480,7 @@ namespace SchoolsMarks
                             Name_UserStories.Text = item.Name;
                             Surname_UserStories.Text = item.Surname;
                             Number_UserStories.Text = Convert.ToString(item.IndexNO);
-                            Freq_UserStories.Text = Convert.ToString(item.frequention);
+                            Freq_UserStories.Text = Convert.ToString(item.frequention)+"%";
                             CheckAVG += int.Parse(Convert.ToString(item.AVGmyUser));
 
                         }
@@ -527,17 +489,11 @@ namespace SchoolsMarks
                             Results_UserStories.Text += item.ExamNames + ": " + item.ExamREsults + "\n";
                         }
 
-
-
-
                         UserStoriesContent.Visibility = Visibility;
-
-
-
-
                     }
 
-                    //2 SPOSÓB
+                    //2 SPOSÓB - ZAPYTANIE DO BAZY
+
                     //using (SqlConnection MyConnect = new SqlConnection(connectionString))
                     //{
 
@@ -595,12 +551,7 @@ namespace SchoolsMarks
                     //Results_UserStories.Text = Results;
                     //AVG_UserStories.Text = AVG_User;
 
-
                     //UserStoriesContent.Visibility = Visibility;
-
-
-
-
                 }
 
 
@@ -645,9 +596,7 @@ namespace SchoolsMarks
             Panel_Ocen.Visibility = Visibility.Hidden;
             System.Windows.Threading.DispatcherTimer Timer = new System.Windows.Threading.DispatcherTimer();
             Timer.Tick += new EventHandler(Timer_Click);
-
             Timer.Interval = new TimeSpan(0, 0, 1);
-
             Timer.Start();
         }
 
@@ -659,13 +608,8 @@ namespace SchoolsMarks
 
         private void AddUSerButton_Click(object sender, RoutedEventArgs e)
         {
-
-
-
             AddUserWindow newWindow = new AddUserWindow();
-            newWindow.Show();
-
-            
+            newWindow.Show();            
         }
 
         private void DeleteUSerButton_Click(object sender, RoutedEventArgs e)

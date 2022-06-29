@@ -5,6 +5,9 @@ namespace SchoolsMarks
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    /// <summary>
+    /// Subject class
+    /// </summary>
 
     [Table("Przedmioty")]
     public partial class Przedmioty

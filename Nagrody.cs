@@ -7,6 +7,9 @@ namespace SchoolsMarks
     using System.Data.Entity.Spatial;
 
     [Table("Nagrody")]
+    /// <summary>
+    /// Unuseful class YET
+    /// </summary>
     public partial class Nagrody
     {
         public int ID { get; set; }
