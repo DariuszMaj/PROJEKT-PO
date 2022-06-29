@@ -279,6 +279,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DeleteUserWindow.xaml.cs">
+      <DependentUpon>DeleteUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddUser.xaml.cs">
+      <DependentUpon>AddUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Egzaminy.cs" />
     <Compile Include="Frekwencja.cs" />
     <Compile Include="Klasy.cs" />
@@ -288,14 +294,23 @@
     <Compile Include="Password.cs" />
     <Compile Include="Przedmioty.cs" />
     <Compile Include="Samorząd.cs" />
+    <Compile Include="SchoolMarkInitializer.cs" />
     <Compile Include="Uczniowie.cs" />
     <Compile Include="UserMessages.xaml.cs">
       <DependentUpon>UserMessages.xaml</DependentUpon>
     </Compile>
     <Compile Include="Wyniki.cs" />
+    <Page Include="DeleteUserWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="button.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ChangePasswordWindow.xaml">
       <SubType>Designer</SubType>

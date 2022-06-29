@@ -660,6 +660,19 @@ namespace SchoolsMarks
         private void AddUSerButton_Click(object sender, RoutedEventArgs e)
         {
 
+
+
+            AddUserWindow newWindow = new AddUserWindow();
+            newWindow.Show();
+
+            
+        }
+
+        private void DeleteUSerButton_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteUserWindow deleteuser = new DeleteUserWindow();
+            deleteuser.Show();
+
         }
     }
 

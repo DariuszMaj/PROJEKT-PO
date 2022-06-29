@@ -15,10 +15,9 @@ namespace SchoolsMarks
 
         public int? ID_Egzaminu { get; set; }
 
-        public decimal Wynik { get; set; }
+        public int Wynik { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime DataPrzystąpienia { get; set; }
+        
 
         public virtual Egzaminy Egzaminy { get; set; }
 

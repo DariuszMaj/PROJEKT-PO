@@ -31,8 +31,8 @@ namespace SchoolsMarks
                 .HasForeignKey(e => e.ID_Egzaminu);
 
             modelBuilder.Entity<Frekwencja>()
-                .Property(e => e.Frekwencja1)
-                .HasPrecision(8, 2);
+                .Property(e => e.Frekwencja1);
+                
 
             modelBuilder.Entity<Klasy>()
                 .HasMany(e => e.Uczniowies)
@@ -65,8 +65,23 @@ namespace SchoolsMarks
                 .HasForeignKey(e => e.ID_Ucznia);
 
             modelBuilder.Entity<Wyniki>()
-                .Property(e => e.Wynik)
-                .HasPrecision(8, 2);
+                .Property(e => e.Wynik);
+              
+
         }
+       
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
 }

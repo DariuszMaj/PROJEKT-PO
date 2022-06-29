@@ -14,7 +14,7 @@ namespace SchoolsMarks
         public int? ID_Ucznia { get; set; }
 
         [Column("Frekwencja")]
-        public decimal? Frekwencja1 { get; set; }
+        public int? Frekwencja1 { get; set; }
 
         public virtual Uczniowie Uczniowie { get; set; }
     }

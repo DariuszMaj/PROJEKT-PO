@@ -13,9 +13,7 @@
         AllowsTransparency="True"
         Background="Transparent"
         MouseDown="Window_MouseDown">
-    <!--<Window.DataContext>
-        <local:MyTime/>
-    </Window.DataContext>-->
+   
 
 
     <Window.Resources>
@@ -789,6 +787,9 @@
                     Background="White"
                     Opacity="0.5" Margin="254,400,680,398"/>
                 <Button Content="ZMIEŃ HASŁO"  Margin="254,436,900,337" x:Name="ChangePasswordButton" Click="ChangePasswordButton_Click"/>
+                <Button Content="DODAJ UŻYTKOWNIKA"  Margin="254,479,900,294" x:Name="AddUSerButton" Click="AddUSerButton_Click" />
+                <Button Content="USUŃ UŻYTKOWNIKA"  Margin="254,522,900,251" x:Name="DeleteUSerButton" Click="DeleteUSerButton_Click" />
+
 
 
             </Grid>
