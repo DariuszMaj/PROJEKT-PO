@@ -132,7 +132,7 @@ namespace SchoolsMarks
         //    REsult1.Text += Convert.ToString(String.Format("   {0} {1}, {2}\n", dataRecord[2], dataRecord[3], dataRecord[4]));
         //}
 
-        private void ApplyChangedMark_Button(object sender, RoutedEventArgs e)
+        public void ApplyChangedMark_Button(object sender, RoutedEventArgs e)
         {
             string NeededIndex = Convert.ToString(Numer_Albumu.Text);
 

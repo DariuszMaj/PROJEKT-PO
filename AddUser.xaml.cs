@@ -30,7 +30,7 @@ namespace SchoolsMarks
         {
             this.Close();
         }
-
+     
         private void AproveChangedPassword_Click(object sender, RoutedEventArgs e)
         {
             using (var context = new Model1())
@@ -40,7 +40,6 @@ namespace SchoolsMarks
                             select (Logg);
                 if (query.SingleOrDefault() == null && NewPassword.Password == ConfirmedPassword.Password)
                 {
-
                     var AddUser = context.Set<Password>();
                     AddUser.Add(new Password { Imie = Name_to_New_Account.Text.Trim(), Nazwisko =Surname_to_New_Account.Text.Trim(), Login = Login_to_New_Account.Text, Password1 =NewPassword.Password });
                     context.SaveChanges();
@@ -49,14 +48,7 @@ namespace SchoolsMarks
                     NewInfo.SomethingWrong.Text = "Użytkownik został dodany.";
                     NewInfo.Show();
                     Thread.Sleep(1000);
-                    this.Close();
-
-
-
-
-                    
-                       
-                    
+                    this.Close();    
                 }
                 else
                 {
@@ -71,8 +63,6 @@ namespace SchoolsMarks
                     NewInfo.Show();
                 }
               
-
-
             }
         }
     }
