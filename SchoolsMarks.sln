@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolsMarks", "SchoolsMarks.csproj", "{49CA0DDF-A772-4A40-A55B-ACD1FCBD4430}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolMarkUnitTests", "..\SchoolMarkUnitTests\SchoolMarkUnitTests.csproj", "{452EB7C1-6148-47B9-A49C-FB4836EB7021}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolMarkUnitTests", "..\SchoolMarkUnitTests\SchoolMarkUnitTests.csproj", "{452EB7C1-6148-47B9-A49C-FB4836EB7021}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SchollMarkApp", "..\SchollMarkApp\SchollMarkApp.vdproj", "{499F034B-CE9E-46E2-BE27-0FCDD875AECD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,9 @@ Global
 		{452EB7C1-6148-47B9-A49C-FB4836EB7021}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{452EB7C1-6148-47B9-A49C-FB4836EB7021}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{452EB7C1-6148-47B9-A49C-FB4836EB7021}.Release|Any CPU.Build.0 = Release|Any CPU
+		{499F034B-CE9E-46E2-BE27-0FCDD875AECD}.Debug|Any CPU.ActiveCfg = Debug
+		{499F034B-CE9E-46E2-BE27-0FCDD875AECD}.Debug|Any CPU.Build.0 = Debug
+		{499F034B-CE9E-46E2-BE27-0FCDD875AECD}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
